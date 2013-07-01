@@ -1,0 +1,57 @@
+.console {
+	background-color: black;
+	color: white;
+}
+.console .red {
+	color: red;
+}
+
+.console .black {
+	color: black;	
+}	
+.console .red {
+	color: red;	
+}	
+.console .green {
+	color: green;	
+}	
+.console .yellow {
+	color: yellow;
+}
+.console .blue {
+	color: blue;	
+}	
+.console .magent {
+	color: magenta;
+}
+.console .cyan {
+	color: cyan;	
+}	
+.console .white {
+	color: white;	
+}	
+
+.console .bright-black {
+	color: black;	
+}	
+.console .bright-red {
+	color: red;	
+}	
+.console .bright-green {
+	color: green;	
+}	
+.console .bright-yellow {
+	color: yellow;
+}
+.console .bright-blue {
+	color: rgb(116, 141, 221);	
+}	
+.console .bright-magent {
+	color: magenta;
+}
+.console .bright-cyan {
+	color: cyan;	
+}	
+.console .bright-white {
+	color: white;	
+}	
