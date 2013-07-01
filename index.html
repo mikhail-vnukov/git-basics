@@ -166,35 +166,80 @@ git config --global alias.lg &quot;log --color --graph --pretty=format:
 	hooks
 	index
 	info
-	logs
 	objects
 	refs
 					</pre>
 				</section>
 				<section>
 					<dl>
+						<dt>config</dt>
+						<dd>contains your project-specific configuration options</dd>
 						<dt>description</dt>
 						<dd>only used by the GitWeb program</dd>
 						<dt>info</dt>
 						<dd>keeps a global exclude file for ignored patterns that you don’t want to track in a .gitignore file</dd>
-
-				    	<dt>hooks</dt>
-				    	<dd>contains your client- or server-side hook scripts</dd>
+						<dt>hooks</dt>
+						<dd>contains your client- or server-side hook scripts</dd>
 					</dl>
 				</section>
-
 				<section>
-					
+					<dl>
+						<dt>HEAD</dt>
+						<dd>points to the branch you currently have checked out</dd>
+						<dt>index</dt>
+						<dd>is where Git stores your staging area information</dd>
+						<dt>objects</dt>
+						<dd>stores all the content for your database</dd>
+						<dt>refs</dt>
+						<dd>stores pointers into commit objects in that data (branches)</dd>
+					</dl>
 				</section>
-				
+				<section>
 					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-
+						<h2>Objects</h2>
+						<pre><code style="font-size: 19px;">
+[hh reveal.js :) ]$ git lg
+* 774b933 - (HEAD, master) First steps (16 minutes ago) &lt;Mikhail Vnukov>
+* 8831469 - Initial (11 hours ago) &lt;Mikhail Vnukov>
+						</code></pre>
 					</section>
+					<section>
+						<pre ><code>
+[hh reveal.js :) ]$ git cat-file -t 774b933
+commit
+						</code> </pre>
+						<pre class="fragment"><code>
+[hh reveal.js :) ]$ git cat-file -p 774b933
+tree 3ccf65ae409bb502812244a3a4585ae32bc9fb7d
+parent 883146996813919dd3d8f35728d05e42fd070a62
+author Mikhail Vnukov &lt;mikhail.vnukov@gmail.com> 1372653800 +0400
+committer Mikhail Vnukov &lt;mikhail.vnukov@gmail.com> 1372653800 +0400
+
+First steps
+						</code></pre>
+					</section>
+					<section>
+						<pre><code>
+[hh reveal.js :) ]$ git cat-file -p 3ccf65ae409bb502812244a
+						</code></pre>
+						<pre><code>
+100644 blob 9ffdbc7345be803854e777dd7183dbe76153ae47	.gitignore
+100644 blob 2d6cd8f4f425afc2f026172851b172151b9f8f3e	.travis.yml
+100644 blob 892469a4e40641af1bf57d292a71e5c28b7373a7	Gruntfile.js
+100644 blob e1e8bf7a8c29fe02e278aba9f7c5658e3b474590	LICENSE
+100644 blob 96b7c0e966f4ffe7ad188b82d7ae9c5caaf42a06	README.md
+040000 tree 6814ad1c3d2a3b8eb087d017a8c00a7c26c370cd	css
+100644 blob 02f8e62584213205a025a0ebfeaf20eca0dbcf92	index.html
+040000 tree f6ddefee310758a129784ff5d68e1c7085041538	js
+040000 tree a630c3d86f33c9b73712c74c2e8c602e5b884f3c	lib
+100644 blob c2e6d3da8f7d84db93aae4daca467f9b34eb3b2f	package.json
+040000 tree 0595ca9d9b4cd568541583bf15c3b595ddc43779	plugin
+100644 blob bc6197e3dc1e19ec90ae353d142b177e37a89864	reveal.sublime-project
+040000 tree b9c5bb7ed230640cdf846c30b06c23c692f24d44	test
+
+						</code></pre>
+					</section>
+				</section>
 					<section>
 						<h2>Basement Level 3</h2>
 						<p>That's it, time to go back up.</p>
