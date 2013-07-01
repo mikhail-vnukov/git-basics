@@ -37,47 +37,163 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h1>GIT introduction</h1>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>Created by <a href="http://github.com/mikhail-vnukov">Mikhail Vnukov</a></small>
 					</p>
 				</section>
 
 				<section>
 					<h2>Heads Up</h2>
+
 					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
+						<b>Git</b> is a <a href="http://en.wikipedia.org/wiki/Distributed_version_control" title="Distributed version control">distributed version control</a> and <a href="http://en.wikipedia.org/wiki/Source_code_management" title="Source code management">source code management</a> (SCM) system width an emphasis on speed.
 					</p>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
 				</section>
 
-				<!-- Example of nested vertical slides -->
+				<section>
+					<h1>First steps</h1>
+				</section>
+
+				<section>
+					<h2>Configuration</h2>
+					<p>
+					Check your <code>$HOME</code> environment variable:
+					<pre><code data-trim contenteditable>
+						set HOME
+					</code></pre>
+					GIT stores its configuration files there.
+					</p>
+					<p class="fragment">
+						If there is no <code>$HOME</code>, then it's <code class="warning">%HOMEDRIVE%/%HOMEDIR%</code> directory
+						</p>
+					<pre class="fragment"><code data-trim contenteditable>
+$ echo %HOMEDRIVE%\%HOMEDIR%
+H:\/
+					</code></pre>
+					<p class="fragment warning">This is not working!</p>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>Configuration</h2>
+						<pre><code data-trim contenteditable>
+$ git config --global user.name "Your Name"
+$ git config --global user.email "your_email@whatever.com"
+						</code></pre>
+						&darr; <!-- arrow down -->
+					</section>
+					<section>
+						<h2>Pretty log</h2>
+						<pre>
+						<code data-trim contenteditable>
+git config --global alias.lg &quot;log --color --graph --pretty=format:
+'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;
+%Creset&lsquo; &minus;&minus;abbrev-commit&quot;
+						</code></pre>
+
+						<pre> <code data-trim contenteditable style="font-size: 13px; margin-top: 20px;">
+* dd20480 - (HEAD, rightReduce) Right reduce (4 months ago) &lt;Mikhail Vnukov>
+* 9240e3e - (origin/threads, threads) Initial thread api (4 months ago) &lt;Mikhail Vnukov>
+*   a3d7294 - (master) Merge pull request #2 from alexogar/generate_$_feature (4 months ago) &lt;Mikhail>
+|\
+| * 4e63749 - Generate main $ file from @IncludeInMain annotated static methods (4 months ago) &lt;alexogar>
+|/
+* 8875951 - Some minor functions (4 months ago) &lt;alexogar>
+* ad4c3ef - Each with next, filter and find (4 months ago) &lt;alexogar>
+* 3bdee79 - Reduce with memo (4 months ago) &lt;alexogar>
+						</code> </pre>
+					</section>
+				</section>
+				<section>
+					<h2>Gitignore</h2>
+					<p>
+						<a href="https://github.com/github/gitignore">https://github.com/github/gitignore</a>
+						<br/>Grab all suitable and put into your <code>.gitignore</code> files
+					</p>
+				</section>
+
 				<section>
 					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						<h2>Clone repo</h2>
+						<h3>HTTPS</h3>
+						<pre><code data-trim>
+							$ git clone https://your.repo/path
+						</code></pre>
+						&darr; <!-- arrow down -->
 					</section>
 					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
+						<h2>To bypass password demand</h2>
+						<p>
+							Create <code>_netrc</code> file in your <code>$HOME</code> directory
+							<pre><code data-trim>
+								machine &lt;hostname> login &lt;username> password &lt;password>
+							</code></pre>
+							<p class=" fragment">
+								<strong class="warning">Insecure!</strong> There are <a href="https://help.github.com/articles/set-up-git#password-caching">better ways</a>
+							</p>
+						</p>
 					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Clone repo</h2>
+						<h3>SSH</h3>
+
+						<pre><code data-trim>
+							$ git clone ssh://your.repo/path
+						</code></pre>	
+						<p class="fragment">
+							Follow your repo instructions on installing SSH keys
+						</p>
+					</section>
+				</section>
+
+
+				<section>
+					<h1>Under the hood</h1>
+				</section>
+				<section>
+					<h2>.git directory</h2>
+					<pre>
+
+	HEAD
+	config
+	description
+	hooks
+	index
+	info
+	logs
+	objects
+	refs
+					</pre>
+				</section>
+				<section>
+					<dl>
+						<dt>description</dt>
+						<dd>only used by the GitWeb program</dd>
+						<dt>info</dt>
+						<dd>keeps a global exclude file for ignored patterns that you don’t want to track in a .gitignore file</dd>
+
+				    	<dt>hooks</dt>
+				    	<dd>contains your client- or server-side hook scripts</dd>
+					</dl>
+				</section>
+
+				<section>
+					
+				</section>
+				
 					<section>
 						<h2>Basement Level 2</h2>
 						<p>Cornify</p>
 						<a class="test" href="http://cornify.com">
 							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
 						</a>
+
 					</section>
 					<section>
 						<h2>Basement Level 3</h2>
