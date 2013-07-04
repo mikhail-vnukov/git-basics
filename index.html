@@ -157,18 +157,40 @@ git config --global alias.lg &quot;log --color --graph --pretty=format:
 					<h1>Under the hood</h1>
 				</section>
 				<section>
+					<section>
 					<h2>.git directory</h2>
-					<pre>
+						<pre>
 
-	HEAD
-	config
-	description
-	hooks
-	index
-	info
-	objects
-	refs
-					</pre>
+		HEAD
+		config
+		description
+		hooks
+		index
+		info
+		objects
+		refs
+						</pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+						
+	[hh git-basics :) ]$ ls  .git/objects/
+	02	15	25	35	41	50	62	6b	72	80	89	96	a3	af	bc	c8	de	f4	fd
+	04	17	26	36	42	55	63	6c	73	82	8a	9a	a6	b0	c0	ca	e0	f6	ff
+	05	1d	29	3c	44	59	67	6e	77	84	90	9d	a7	b6	c2	cc	e1	f8	info
+	11	20	2d	3f	47	5a	68	6f	78	87	93	9e	ad	b8	c3	d0	e6	f9	pack
+	12	24	2e	40	49	5d	69	71	7e	88	95	9f	ae	b9	c4	d1	e9	fa
+						</code></pre>
+
+						<pre>
+	[hh git-basics :( ]$ ls .git/objects/3c/
+	cf65ae409bb502812244a3a4585ae32bc9fb7d
+						</code></pre>
+					</section>
+					<section>
+						<img src="images/under-the-hood.jpg"/>
+					</section>
+
 				</section>
 				<section>
 					<dl>
@@ -239,38 +261,72 @@ First steps
 
 						</code></pre>
 					</section>
-				</section>
+
 					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
+						<img src="images/git-objects.png"/>
 					</section>
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
+				<section>
+					<h2>Branches</h2>
+					<pre><code>
+[hh git-basics :) ]$ ls .git/refs
+heads	remotes	tags
+
+					</code></pre>
+					</section>
+					<section>
+						<h2>heads = branches</h2>
+						<pre><code data-trim>
+	[hh git-basics :) ]$ ls .git/refs/heads/
+	gh-pages	master
+						</code></pre>
+						<pre class="fragment"><code data-trim>
+	[hh git-basics :) ]$ git branch
+	* gh-pages
+	  master
+						</code></pre>
+					</section>
+					<section>
+						<h2>remotes = remote branches</h2>
+						<pre><code data-trim>
+[hh git-basics :) ]$ ls .git/refs/remotes/origin/
+gh-pages
+						</code></pre>
+						<pre class="fragment"><code data-trim>
+[hh git-basics :( ]$ git branch -a
+* gh-pages
+  master
+  remotes/origin/gh-pages
+  						</code></pre>
+					</section>
+					<section>
+						<h2>HEAD = current branch</h2>
+						<pre><code data-trim>
+[hh git-basics :) ]$ cat .git/HEAD
+ref: refs/heads/gh-pages
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h1>Abstractions</h1>
 				</section>
 
 				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
+					<section>
+						<h2>Branches</h2>
+						<p>
+							Branches are just references to commits.
+						</p>
+					</section>
+					<section>
+						<pre><code data-trim>
+	[hh git-basics :) ]$ git checkout -b part2
+						</code></pre>
+						<img class="fragment" src="images/branches/br1.png"/>
+					
+					</section>
 				</section>
 
 				<section>
